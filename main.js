@@ -36,8 +36,8 @@ global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
-  /https?:\/\//.test(opts['db'] || '') ?
-    new cloudDBAdapter(opts['db']) : /mongodb/.test(opts['db']) ?
+  /https?:\/\//.test(opts['mongodb+srv://kyura:kyura@cluster0.vxucf.mongodb.net/?retryWrites=true&w=majority'] || '') ?
+    new cloudDBAdapter(opts['mongodb+srv://kyura:kyura@cluster0.vxucf.mongodb.net/?retryWrites=true&w=majority']) : /mongodb/.test(opts['mongodb+srv://kyura:kyura@cluster0.vxucf.mongodb.net/?retryWrites=true&w=majority']) ?
       new mongoDB('mongodb+srv://kyura:kyura@cluster0.vxucf.mongodb.net/?retryWrites=true&w=majority') :
       new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
 )
